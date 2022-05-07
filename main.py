@@ -16,5 +16,25 @@ def print_points():
 			print(feature.geometry())
 
 	app.exitQgis()
+	
+	
+def print_nearest_points(x, y):
+	app = QgsApplication([], True, None)
+	app.setPrefixPath("/usr", True)
+	app.initQgis()
 
-print_points()
+	path_to_layer = "/home/ivan/qgis_sample_data/shapefiles/regions.shp"
+	vlayer = QgsVectorLayer(path_to_layer, "Airports layer", "ogr")
+	if not vlayer.isValid():
+		print("Layer failed to load!")
+
+	key = QgsGeometry.fromPointXY(QgsPointXY(x, y))
+
+	for feature in vlayer.getFeatures():
+		if (feature.hasGeometry()):
+			p = feature.geometry().nearestPoint(key).asPoint()
+			print(str(p.x()) + ' ' + str(p.y()))
+
+	app.exitQgis()
+
+print_nearest_points(727500, 4236000)
