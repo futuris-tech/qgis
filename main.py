@@ -25,7 +25,7 @@ def f():
 	vlayer = QgsVectorLayer(path_to_layer, "Airports layer", "ogr")
 	if not vlayer.isValid():
 		print("Layer failed to load!")
-		return
+		exit()
 
 
 
