@@ -62,7 +62,7 @@ async def upload(file: UploadFile = File(...)):
     return {"message": f"Successfuly uploaded {file.filename}"}
 
 @app.get("/result")
-def result():
+async def result():
 	result = f()
 	if (result):
 		return FileResponse("out.png")
