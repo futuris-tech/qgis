@@ -1,15 +1,7 @@
 import sys
-import qgis
 from qgis.core import*
-from qgis.PyQt.QtGui import (
-    QPolygonF,
-    QColor,
-)
-from qgis.PyQt.QtCore import (
-    QPointF,
-    QRectF,
-    QSize,
-)
+from qgis.PyQt.QtGui import QColor
+from qgis.PyQt.QtCore import QSize
 
 from typing import Union
 from fastapi import FastAPI, File, UploadFile
